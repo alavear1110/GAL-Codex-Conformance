@@ -2,12 +2,12 @@
   "gal_version": "0.5.0",
   "project_name": "ExpPay",
   "gal_mode": "STANDARD",
-  "task_mode": "EXPLORE",
+  "task_mode": "REVIEW",
   "intake_status": "SUFFICIENT_WITH_GAPS",
-  "current_phase": "GUIDE",
+  "current_phase": "ALIGN",
   "context": {
     "objective": "Enable employees to submit expenses in the existing employee portal, route them to managers for approval, and enable Finance to handle reimbursement.",
-    "current_task": "Establish the project scope and requirements for ExpPay.",
+    "current_task": "Review and align on the drafted ExpPay requirements while preserving unresolved decisions.",
     "in_scope": [
       "Employee expense submission in the existing employee portal",
       "Manager approval of submitted expenses",
@@ -65,11 +65,11 @@
   },
   "artifacts": {
     "requirements": {
-      "path": "",
-      "exists": false,
-      "gal_scrubbed": false,
-      "reconciled": false,
-      "provenance_validated": false,
+      "path": "requirements/exp-pay-requirements.md",
+      "exists": true,
+      "gal_scrubbed": true,
+      "reconciled": true,
+      "provenance_validated": true,
       "state_validated": false
     }
   },
@@ -105,6 +105,30 @@
       "priority": "LATER",
       "status": "OPEN",
       "disposition": "DEFERRED"
+    },
+    {
+      "id": "Q-011",
+      "question": "What should happen when an expense is submitted outside the 60-day period?",
+      "question_type": "OPTIONAL_DISCOVERY",
+      "priority": "LATER",
+      "status": "OPEN",
+      "disposition": "DEFERRED"
+    },
+    {
+      "id": "Q-012",
+      "question": "When two managers must approve, is approval sequential, and what ordering and decision behavior apply?",
+      "question_type": "OPTIONAL_DISCOVERY",
+      "priority": "LATER",
+      "status": "OPEN",
+      "disposition": "DEFERRED"
+    },
+    {
+      "id": "Q-013",
+      "question": "How will ExpPay obtain or refresh expense types from the existing QuickBooks configuration?",
+      "question_type": "OPTIONAL_DISCOVERY",
+      "priority": "LATER",
+      "status": "OPEN",
+      "disposition": "DEFERRED"
     }
   ],
   "decision_debt": [
@@ -126,6 +150,21 @@
     {
       "id": "DD-004",
       "decision": "Determine which workflow notifications are required and who receives them.",
+      "priority": "NON_BLOCKING"
+    },
+    {
+      "id": "DD-005",
+      "decision": "Determine behavior for expenses submitted outside the 60-day period.",
+      "priority": "NON_BLOCKING"
+    },
+    {
+      "id": "DD-006",
+      "decision": "Determine ordering and decision behavior when two managers must approve.",
+      "priority": "NON_BLOCKING"
+    },
+    {
+      "id": "DD-007",
+      "decision": "Determine how ExpPay obtains or refreshes expense types from the existing QuickBooks configuration.",
       "priority": "NON_BLOCKING"
     }
   ],
@@ -206,15 +245,15 @@
     },
     "stakeholder_review": {
       "status": "NOT_READY",
-      "reason": "No reviewable artifact yet"
+      "reason": "Requirements draft exists and review audits completed, but deterministic GAL state validation has not executed"
     },
     "development": {
       "status": "NOT_READY",
-      "reason": "Requirements not established"
+      "reason": "Requirements artifact has not passed all review gates"
     },
     "qa_test_design": {
       "status": "NOT_READY",
-      "reason": "Testable behavior not established"
+      "reason": "Requirements artifact has not passed all review gates"
     }
   },
   "last_validation": {
@@ -223,5 +262,5 @@
     "timestamp": null,
     "errors": []
   },
-  "last_updated": "2026-09-21T04:34:18.904111+00:00"
+  "last_updated": "2026-09-21T04:38:53.023819+00:00"
 }
