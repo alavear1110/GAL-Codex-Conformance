@@ -3,7 +3,7 @@
   "project_name": "ExpPay",
   "gal_mode": "STANDARD",
   "task_mode": "EXPLORE",
-  "intake_status": "IN_PROGRESS",
+  "intake_status": "SUFFICIENT_WITH_GAPS",
   "current_phase": "GUIDE",
   "context": {
     "objective": "Enable employees to submit expenses in the existing employee portal, route them to managers for approval, and enable Finance to handle reimbursement.",
@@ -35,7 +35,8 @@
       "User-provided approval policy and GAL mode selection dated 2026-09-21",
       "User-provided threshold, category, and receipt rules dated 2026-09-21",
       "User-provided payment, resubmission, and submission-timing rules dated 2026-09-21",
-      "User-provided timing, QuickBooks source, and payroll mechanism status dated 2026-09-21"
+      "User-provided timing, QuickBooks source, and payroll mechanism status dated 2026-09-21",
+      "User-provided required-field and deferred workflow decisions dated 2026-09-21"
     ],
     "confirmed_business_rules": [
       "Employees submit expenses in the existing employee portal.",
@@ -48,12 +49,13 @@
       "Expenses not on a corporate card that are $101 or more also require approval by the next-level manager.",
       "Expense categories must mirror QuickBooks expense types because Finance needs those categories for tax reporting.",
       "No additional category-specific limits have been defined.",
-      "Receipts are required for expenses of $26 or more.",
+      "Employees must attach a receipt for expenses of $26 or more.",
       "Corporate card expenses are paid directly to the card vendor.",
       "For employee-paid out-of-pocket expenses, reimbursement is included in the employee's next scheduled payroll deposit after the expense is approved.",
       "Rejected expenses can be revised and resubmitted.",
       "Expenses must be submitted within 60 days of the expense date.",
-      "Expense types come from the company's existing QuickBooks configuration."
+      "Expense types come from the company's existing QuickBooks configuration.",
+      "Employees must provide the expense date, amount, payment type, and expense category for each expense."
     ],
     "derived_facts": [],
     "inferences": [],
@@ -81,20 +83,12 @@
       "disposition": "DEFERRED"
     },
     {
-      "id": "Q-007",
-      "question": "What information must an employee provide for each submitted expense?",
-      "question_type": "REQUIRED_CLARIFICATION",
-      "priority": "IMPORTANT",
-      "status": "OPEN",
-      "disposition": "ACTIVE"
-    },
-    {
       "id": "Q-008",
       "question": "Who may reject an expense, and must the rejection include a reason for the employee?",
       "question_type": "REQUIRED_CLARIFICATION",
       "priority": "IMPORTANT",
       "status": "OPEN",
-      "disposition": "ACTIVE"
+      "disposition": "DEFERRED"
     },
     {
       "id": "Q-009",
@@ -102,13 +96,36 @@
       "question_type": "REQUIRED_CLARIFICATION",
       "priority": "IMPORTANT",
       "status": "OPEN",
-      "disposition": "ACTIVE"
+      "disposition": "DEFERRED"
+    },
+    {
+      "id": "Q-010",
+      "question": "Must an employee provide a description for an expense?",
+      "question_type": "OPTIONAL_DISCOVERY",
+      "priority": "LATER",
+      "status": "OPEN",
+      "disposition": "DEFERRED"
     }
   ],
   "decision_debt": [
     {
       "id": "DD-001",
       "decision": "Finance and Payroll must determine the technical mechanism for transferring approved out-of-pocket expenses into payroll.",
+      "priority": "NON_BLOCKING"
+    },
+    {
+      "id": "DD-002",
+      "decision": "Determine whether expense descriptions are required.",
+      "priority": "NON_BLOCKING"
+    },
+    {
+      "id": "DD-003",
+      "decision": "Determine who may reject an expense and whether a rejection reason is required.",
+      "priority": "NON_BLOCKING"
+    },
+    {
+      "id": "DD-004",
+      "decision": "Determine which workflow notifications are required and who receives them.",
       "priority": "NON_BLOCKING"
     }
   ],
@@ -142,6 +159,12 @@
       "question": "What event starts the 60-day expense submission period?",
       "resolution": "The 60-day submission period starts on the expense date.",
       "resolved_at": "2026-09-21T04:31:27.961147+00:00"
+    },
+    {
+      "id": "Q-007",
+      "question": "What information must an employee provide for each submitted expense?",
+      "resolution": "Employees must provide expense date, amount, payment type, and expense category. A receipt must be attached when required by the receipt rule. Whether a description is required remains deferred in Q-010.",
+      "resolved_at": "2026-09-21T04:34:18.903806+00:00"
     }
   ],
   "decisions": [
@@ -168,12 +191,18 @@
       "decision": "Measure the 60-day submission period from the expense date.",
       "source": "User",
       "decided_at": "2026-09-21T04:31:27.961156+00:00"
+    },
+    {
+      "id": "D-005",
+      "decision": "Require expense date, amount, payment type, and expense category for every expense, plus a receipt when the receipt rule applies.",
+      "source": "User",
+      "decided_at": "2026-09-21T04:34:18.904079+00:00"
     }
   ],
   "readiness": {
     "discovery": {
-      "status": "READY_WITH_GAPS",
-      "reason": "3 active important clarification question(s); payroll transfer mechanism deferred as non-blocking decision debt"
+      "status": "READY",
+      "reason": "Project context established with no active important clarification questions; deferred non-blocking decisions remain"
     },
     "stakeholder_review": {
       "status": "NOT_READY",
@@ -194,5 +223,5 @@
     "timestamp": null,
     "errors": []
   },
-  "last_updated": "2026-09-21T04:31:27.961161+00:00"
+  "last_updated": "2026-09-21T04:34:18.904111+00:00"
 }
