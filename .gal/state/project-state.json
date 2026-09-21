@@ -1,0 +1,266 @@
+{
+  "gal_version": "0.5.0",
+  "project_name": "ExpPay",
+  "gal_mode": "STANDARD",
+  "task_mode": "REVIEW",
+  "intake_status": "SUFFICIENT_WITH_GAPS",
+  "current_phase": "ALIGN",
+  "context": {
+    "objective": "Enable employees to submit expenses in the existing employee portal, route them to managers for approval, and enable Finance to handle reimbursement.",
+    "current_task": "Review ExpPay requirements readiness without resolving deferred decisions.",
+    "in_scope": [
+      "Employee expense submission in the existing employee portal",
+      "Manager approval of submitted expenses",
+      "Finance handling of reimbursement",
+      "Expense categorization using QuickBooks expense types",
+      "Corporate card settlement handling",
+      "Out-of-pocket expense reimbursement through scheduled payroll deposits",
+      "Revision and resubmission of rejected expenses",
+      "Expense submission timeliness enforcement"
+    ],
+    "out_of_scope": [],
+    "actors": [
+      "Employees",
+      "Managers",
+      "Finance",
+      "Payroll"
+    ],
+    "systems": [
+      "Existing employee portal",
+      "Existing company QuickBooks configuration (authoritative expense type source)",
+      "Employee payroll deposit process"
+    ],
+    "authoritative_sources": [
+      "User-provided project brief dated 2026-09-21",
+      "User-provided approval policy and GAL mode selection dated 2026-09-21",
+      "User-provided threshold, category, and receipt rules dated 2026-09-21",
+      "User-provided payment, resubmission, and submission-timing rules dated 2026-09-21",
+      "User-provided timing, QuickBooks source, and payroll mechanism status dated 2026-09-21",
+      "User-provided required-field and deferred workflow decisions dated 2026-09-21"
+    ],
+    "confirmed_business_rules": [
+      "Employees submit expenses in the existing employee portal.",
+      "Managers approve submitted expenses.",
+      "Finance handles reimbursement.",
+      "Corporate card expenses of $25 or less are automatically approved.",
+      "Corporate card expenses over $25 and under $101 require approval by the employee's direct manager.",
+      "Corporate card expenses of $101 or more require approval by the direct manager and the next-level manager.",
+      "Expenses not on a corporate card always require approval by the employee's direct manager.",
+      "Expenses not on a corporate card that are $101 or more also require approval by the next-level manager.",
+      "Expense categories must mirror QuickBooks expense types because Finance needs those categories for tax reporting.",
+      "No additional category-specific limits have been defined.",
+      "Employees must attach a receipt for expenses of $26 or more.",
+      "Corporate card expenses are paid directly to the card vendor.",
+      "For employee-paid out-of-pocket expenses, reimbursement is included in the employee's next scheduled payroll deposit after the expense is approved.",
+      "Rejected expenses can be revised and resubmitted.",
+      "Expenses must be submitted within 60 days of the expense date.",
+      "Expense types come from the company's existing QuickBooks configuration.",
+      "Employees must provide the expense date, amount, payment type, and expense category for each expense."
+    ],
+    "derived_facts": [],
+    "inferences": [],
+    "proposals": [],
+    "constraints": [],
+    "terminology": []
+  },
+  "artifacts": {
+    "requirements": {
+      "path": "requirements/exp-pay-requirements.md",
+      "exists": true,
+      "gal_scrubbed": true,
+      "reconciled": true,
+      "provenance_validated": true,
+      "state_validated": false
+    }
+  },
+  "open_questions": [
+    {
+      "id": "Q-002",
+      "question": "What process or system transfers an approved out-of-pocket expense into the employee payroll deposit, and what role does ExpPay play in that transfer?",
+      "question_type": "REQUIRED_CLARIFICATION",
+      "priority": "IMPORTANT",
+      "status": "OPEN",
+      "disposition": "DEFERRED"
+    },
+    {
+      "id": "Q-008",
+      "question": "Who may reject an expense, and must the rejection include a reason for the employee?",
+      "question_type": "REQUIRED_CLARIFICATION",
+      "priority": "IMPORTANT",
+      "status": "OPEN",
+      "disposition": "DEFERRED"
+    },
+    {
+      "id": "Q-009",
+      "question": "Which expense status changes require notifications, and who receives them?",
+      "question_type": "REQUIRED_CLARIFICATION",
+      "priority": "IMPORTANT",
+      "status": "OPEN",
+      "disposition": "DEFERRED"
+    },
+    {
+      "id": "Q-010",
+      "question": "Must an employee provide a description for an expense?",
+      "question_type": "OPTIONAL_DISCOVERY",
+      "priority": "LATER",
+      "status": "OPEN",
+      "disposition": "DEFERRED"
+    },
+    {
+      "id": "Q-011",
+      "question": "What should happen when an expense is submitted outside the 60-day period?",
+      "question_type": "OPTIONAL_DISCOVERY",
+      "priority": "LATER",
+      "status": "OPEN",
+      "disposition": "DEFERRED"
+    },
+    {
+      "id": "Q-012",
+      "question": "When two managers must approve, is approval sequential, and what ordering and decision behavior apply?",
+      "question_type": "OPTIONAL_DISCOVERY",
+      "priority": "LATER",
+      "status": "OPEN",
+      "disposition": "DEFERRED"
+    },
+    {
+      "id": "Q-013",
+      "question": "How will ExpPay obtain or refresh expense types from the existing QuickBooks configuration?",
+      "question_type": "OPTIONAL_DISCOVERY",
+      "priority": "LATER",
+      "status": "OPEN",
+      "disposition": "DEFERRED"
+    }
+  ],
+  "decision_debt": [
+    {
+      "id": "DD-001",
+      "decision": "Finance and Payroll must determine the technical mechanism for transferring approved out-of-pocket expenses into payroll.",
+      "priority": "NON_BLOCKING"
+    },
+    {
+      "id": "DD-002",
+      "decision": "Determine whether expense descriptions are required.",
+      "priority": "NON_BLOCKING"
+    },
+    {
+      "id": "DD-003",
+      "decision": "Determine who may reject an expense and whether a rejection reason is required.",
+      "priority": "NON_BLOCKING"
+    },
+    {
+      "id": "DD-004",
+      "decision": "Determine which workflow notifications are required and who receives them.",
+      "priority": "NON_BLOCKING"
+    },
+    {
+      "id": "DD-005",
+      "decision": "Determine behavior for expenses submitted outside the 60-day period.",
+      "priority": "NON_BLOCKING"
+    },
+    {
+      "id": "DD-006",
+      "decision": "Determine ordering and decision behavior when two managers must approve.",
+      "priority": "NON_BLOCKING"
+    },
+    {
+      "id": "DD-007",
+      "decision": "Determine how ExpPay obtains or refreshes expense types from the existing QuickBooks configuration.",
+      "priority": "NON_BLOCKING"
+    }
+  ],
+  "resolved_history": [
+    {
+      "id": "Q-001",
+      "question": "Which GAL requirements depth should ExpPay use?",
+      "resolution": "STANDARD",
+      "resolved_at": "2026-09-21T04:15:07.270473+00:00"
+    },
+    {
+      "id": "Q-003",
+      "question": "What approval policy should apply to submitted expenses?",
+      "resolution": "Approval varies by corporate-card status and expense amount, as recorded in confirmed business rules; fractional threshold gaps remain tracked in Q-004.",
+      "resolved_at": "2026-09-21T04:15:07.270674+00:00"
+    },
+    {
+      "id": "Q-004",
+      "question": "How should amounts between $25.00 and $26.00 and between $100.00 and $101.00 be approved when an expense includes cents?",
+      "resolution": "Use continuous approval thresholds: corporate-card expenses up to and including $25 are automatically approved; expenses over $25 and under $101 require the direct manager; expenses of $101 or more require the direct manager and next-level manager. Non-corporate-card expenses always require the direct manager and also require the next-level manager at $101 or more.",
+      "resolved_at": "2026-09-21T04:21:56.964225+00:00"
+    },
+    {
+      "id": "Q-005",
+      "question": "What is the authoritative list or source for the QuickBooks expense types that ExpPay must mirror?",
+      "resolution": "Use the company's existing QuickBooks configuration as the authoritative source for expense types.",
+      "resolved_at": "2026-09-21T04:31:27.960928+00:00"
+    },
+    {
+      "id": "Q-006",
+      "question": "What event starts the 60-day expense submission period?",
+      "resolution": "The 60-day submission period starts on the expense date.",
+      "resolved_at": "2026-09-21T04:31:27.961147+00:00"
+    },
+    {
+      "id": "Q-007",
+      "question": "What information must an employee provide for each submitted expense?",
+      "resolution": "Employees must provide expense date, amount, payment type, and expense category. A receipt must be attached when required by the receipt rule. Whether a description is required remains deferred in Q-010.",
+      "resolved_at": "2026-09-21T04:34:18.903806+00:00"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-001",
+      "decision": "Use STANDARD GAL mode for ExpPay.",
+      "source": "User",
+      "decided_at": "2026-09-21T04:15:07.270680+00:00"
+    },
+    {
+      "id": "D-002",
+      "decision": "Use continuous monetary thresholds for expense approval routing.",
+      "source": "User",
+      "decided_at": "2026-09-21T04:21:56.964418+00:00"
+    },
+    {
+      "id": "D-003",
+      "decision": "Use the company's existing QuickBooks configuration as the authoritative expense type source.",
+      "source": "User",
+      "decided_at": "2026-09-21T04:31:27.961153+00:00"
+    },
+    {
+      "id": "D-004",
+      "decision": "Measure the 60-day submission period from the expense date.",
+      "source": "User",
+      "decided_at": "2026-09-21T04:31:27.961156+00:00"
+    },
+    {
+      "id": "D-005",
+      "decision": "Require expense date, amount, payment type, and expense category for every expense, plus a receipt when the receipt rule applies.",
+      "source": "User",
+      "decided_at": "2026-09-21T04:34:18.904079+00:00"
+    }
+  ],
+  "readiness": {
+    "discovery": {
+      "status": "READY",
+      "reason": "Project context established with no active important clarification questions; deferred non-blocking decisions remain"
+    },
+    "stakeholder_review": {
+      "status": "NOT_READY",
+      "reason": "Draft review can proceed, but formal readiness is blocked because deterministic GAL state validation has not executed"
+    },
+    "development": {
+      "status": "NOT_READY",
+      "reason": "Requirements have not passed all review gates; unresolved workflow and integration decisions also limit end-to-end implementation"
+    },
+    "qa_test_design": {
+      "status": "NOT_READY",
+      "reason": "Requirements have not passed all review gates; tests can be drafted only for established behavior"
+    }
+  },
+  "last_validation": {
+    "executed": false,
+    "passed": false,
+    "timestamp": null,
+    "errors": []
+  },
+  "last_updated": "2026-09-21T04:48:04.032206+00:00"
+}
