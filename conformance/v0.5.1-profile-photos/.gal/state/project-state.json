@@ -1,0 +1,101 @@
+{
+  "gal_version": "0.5.1",
+  "project_name": "Employee Profile Photos",
+  "gal_mode": "QUICK",
+  "task_mode": "REVIEW",
+  "intake_status": "SUFFICIENT_WITH_GAPS",
+  "current_phase": "LEAD",
+  "context": {
+    "objective": "Add employee profile photos to the existing employee portal with employee upload, manager viewing, and policy-based HR removal.",
+    "current_task": "Review the focused requirements while preserving supplied unknowns and storage implementation neutrality.",
+    "in_scope": [
+      "Employee upload of their own JPG or PNG profile photo",
+      "The 5 MB maximum file-size rule",
+      "Viewing by the employee's manager",
+      "HR removal when a photo violates company policy",
+      "Existing portal authentication context",
+      "Implementation-neutral storage constraint"
+    ],
+    "out_of_scope": [],
+    "actors": [
+      "Employee — can upload their own JPG or PNG profile photo (SUPPORTED)",
+      "Employee's manager — can view the employee's photo (SUPPORTED)",
+      "HR — can remove a photo when it violates company policy (SUPPORTED)"
+    ],
+    "systems": [
+      "Existing employee portal — already authenticates employees, managers, and HR (SUPPORTED)",
+      "Profile-photo storage implementation — not selected and constrained to remain technology-neutral in this exercise (SUPPORTED)"
+    ],
+    "authoritative_sources": [
+      "Project opening and twelve supported facts supplied for the focused conformance exercise"
+    ],
+    "confirmed_business_rules": [
+      "Employees can upload JPG or PNG profile photos.",
+      "Maximum profile-photo file size is 5 MB.",
+      "The employee's manager can view the photo.",
+      "HR can remove a photo if it violates company policy.",
+      "The existing portal already authenticates employees, managers, and HR.",
+      "No storage implementation has been selected.",
+      "Storage technology must remain implementation-neutral for this requirements exercise."
+    ],
+    "derived_facts": [
+      "Photo format and file size must be available to the rule evaluator because the supported type and size rules cannot be evaluated without them."
+    ],
+    "inferences": [],
+    "proposals": [],
+    "constraints": [
+      "Storage technology must remain implementation-neutral for this requirements exercise.",
+      "File type and size rules must not be converted into an unsupported rejection, blocking, deletion, or transformation consequence."
+    ],
+    "terminology": [
+      "Employee's manager — the manager related to the employee whose photo is being viewed.",
+      "Company policy violation — the supplied condition under which HR can remove a photo; policy content and adjudication are not defined by the evidence."
+    ]
+  },
+  "artifacts": {
+    "requirements": {
+      "path": "requirements/profile-photo-requirements.md",
+      "exists": true,
+      "gal_scrubbed": true,
+      "reconciled": true,
+      "provenance_validated": true,
+      "state_validated": false
+    }
+  },
+  "open_questions": [],
+  "decision_debt": [],
+  "resolved_history": [],
+  "decisions": [
+    "Use QUICK GAL mode for the narrow, supplied profile-photo capability and focused evidence review.",
+    "Preserve resizing/compression, EXIF handling, removal notifications, audit history, and employee self-deletion as UNKNOWN without creating questions or decision debt.",
+    "Treat storage technology neutrality as an in-scope constraint rather than an out-of-scope declaration.",
+    "Do not create blocking decision debt for eventual implementation choices that do not prevent meaningful progression on the established requirements."
+  ],
+  "readiness": {
+    "discovery": {
+      "status": "READY",
+      "reason": "Focused project context is established with no active important clarification questions or discovery-blocking decision debt."
+    },
+    "stakeholder_review": {
+      "status": "NOT_READY",
+      "reason": "The requirements artifact has completed evidence review, but deterministic state validation has not executed successfully in this environment."
+    },
+    "development": {
+      "status": "NOT_READY",
+      "reason": "Deterministic state validation has not executed successfully; no decision-debt item blocks development."
+    },
+    "qa_test_design": {
+      "status": "NOT_READY",
+      "reason": "Deterministic state validation has not executed successfully; no decision-debt item blocks QA test design."
+    }
+  },
+  "last_validation": {
+    "executed": false,
+    "passed": false,
+    "timestamp": null,
+    "errors": [
+      "PowerShell host unavailable; the deterministic runtime validator could not execute."
+    ]
+  },
+  "last_updated": "2026-09-21T00:00:00Z"
+}
