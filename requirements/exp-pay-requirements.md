@@ -161,3 +161,53 @@ items are resolved.
 - Canonical-state consistency: pending deterministic state validation.
 - Validator execution: **NOT EXECUTED** because PowerShell (`pwsh`) is not
   available in the current environment. Validation PASS is not claimed.
+
+## 10. Readiness assessment
+
+This assessment distinguishes GAL gate status from work that can usefully begin
+without resolving deferred decisions.
+
+### 10.1 Ready
+
+- **Discovery is READY.** The objective, scope, actors, required expense data,
+  receipt threshold, approval thresholds, category authority, submission
+  period, resubmission outcome, and payment outcomes are established.
+- The requirements listed as **SUPPORTED** are ready for stakeholder reading,
+  estimation, architecture exploration, and acceptance-test elaboration, as
+  long as those activities preserve the UNKNOWN items.
+
+### 10.2 Work that can proceed with gaps
+
+- Stakeholders can review the draft and confirm whether it accurately reflects
+  the established rules. This is useful review work, but it is not a formal GAL
+  stakeholder-review readiness PASS.
+- Teams can plan or prototype the expense form fields, receipt threshold,
+  continuous approval thresholds, and 60-day calculation. They must not embed
+  a decision for any unresolved workflow or integration behavior.
+- QA can draft tests for the established requirements and boundary values. A
+  complete test design cannot be finalized for unresolved behaviors.
+
+These activities proceed at risk: work may need revision when deferred
+decisions are made.
+
+### 10.3 What prevents formal progression
+
+- **Deterministic GAL validation has not executed.** This prevents the
+  requirements artifact from passing every review gate and therefore keeps
+  formal stakeholder-review, development, and QA readiness at **NOT_READY**.
+- End-to-end payroll reimbursement implementation cannot be specified until
+  Finance and Payroll determine the transfer mechanism and ExpPay's role
+  (Q-002 / DD-001).
+- A complete rejection workflow cannot be specified until rejection authority
+  and the rejection-reason rule are determined (Q-008 / DD-003).
+- Handling of submissions outside the 60-day period cannot be implemented from
+  current evidence (Q-011 / DD-005).
+- The $101-or-more approval workflow cannot be fully specified until ordering
+  and decision behavior for two-manager approval are determined
+  (Q-012 / DD-006).
+- QuickBooks category retrieval or refresh cannot be implemented until its
+  mechanism is determined (Q-013 / DD-007).
+
+The description decision (Q-010 / DD-002) and notification decision
+(Q-009 / DD-004) remain genuine gaps, but they do not prevent work on the
+confirmed submission and approval rules. No resolution is assumed for either.
