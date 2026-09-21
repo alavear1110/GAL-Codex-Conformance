@@ -1,7 +1,7 @@
 {
   "gal_version": "0.5.0",
   "project_name": "ExpPay",
-  "gal_mode": "UNSET",
+  "gal_mode": "STANDARD",
   "task_mode": "EXPLORE",
   "intake_status": "IN_PROGRESS",
   "current_phase": "GUIDE",
@@ -23,12 +23,18 @@
       "Existing employee portal"
     ],
     "authoritative_sources": [
-      "User-provided project brief dated 2026-09-21"
+      "User-provided project brief dated 2026-09-21",
+      "User-provided approval policy and GAL mode selection dated 2026-09-21"
     ],
     "confirmed_business_rules": [
       "Employees submit expenses in the existing employee portal.",
       "Managers approve submitted expenses.",
-      "Finance handles reimbursement."
+      "Finance handles reimbursement.",
+      "Corporate card expenses of $25 or less are automatically approved.",
+      "Corporate card expenses from $26 through $100 require approval by the employee's direct manager.",
+      "Corporate card expenses of $101 or more require approval by the direct manager and the next-level manager.",
+      "Expenses not on a corporate card always require approval by the employee's direct manager.",
+      "Expenses not on a corporate card that are $101 or more also require approval by the next-level manager."
     ],
     "derived_facts": [],
     "inferences": [],
@@ -48,14 +54,6 @@
   },
   "open_questions": [
     {
-      "id": "Q-001",
-      "question": "Which GAL requirements depth should ExpPay use?",
-      "question_type": "REQUIRED_CLARIFICATION",
-      "priority": "IMPORTANT",
-      "status": "OPEN",
-      "disposition": "ACTIVE"
-    },
-    {
       "id": "Q-002",
       "question": "Does ExpPay only hand approved expenses to Finance for reimbursement, or must it execute or integrate with reimbursement payments?",
       "question_type": "REQUIRED_CLARIFICATION",
@@ -64,8 +62,8 @@
       "disposition": "ACTIVE"
     },
     {
-      "id": "Q-003",
-      "question": "What approval policy should apply to submitted expenses?",
+      "id": "Q-004",
+      "question": "How should amounts between $25.00 and $26.00 and between $100.00 and $101.00 be approved when an expense includes cents?",
       "question_type": "REQUIRED_CLARIFICATION",
       "priority": "IMPORTANT",
       "status": "OPEN",
@@ -73,12 +71,32 @@
     }
   ],
   "decision_debt": [],
-  "resolved_history": [],
-  "decisions": [],
+  "resolved_history": [
+    {
+      "id": "Q-001",
+      "question": "Which GAL requirements depth should ExpPay use?",
+      "resolution": "STANDARD",
+      "resolved_at": "2026-09-21T04:15:07.270473+00:00"
+    },
+    {
+      "id": "Q-003",
+      "question": "What approval policy should apply to submitted expenses?",
+      "resolution": "Approval varies by corporate-card status and expense amount, as recorded in confirmed business rules; fractional threshold gaps remain tracked in Q-004.",
+      "resolved_at": "2026-09-21T04:15:07.270674+00:00"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-001",
+      "decision": "Use STANDARD GAL mode for ExpPay.",
+      "source": "User",
+      "decided_at": "2026-09-21T04:15:07.270680+00:00"
+    }
+  ],
   "readiness": {
     "discovery": {
       "status": "READY_WITH_GAPS",
-      "reason": "3 active important clarification question(s)"
+      "reason": "2 active important clarification question(s)"
     },
     "stakeholder_review": {
       "status": "NOT_READY",
@@ -99,5 +117,5 @@
     "timestamp": null,
     "errors": []
   },
-  "last_updated": "2026-09-21T04:07:30.298846+00:00"
+  "last_updated": "2026-09-21T04:15:07.270684+00:00"
 }
