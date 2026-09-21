@@ -22,18 +22,20 @@
     "actors": [
       "Employees",
       "Managers",
-      "Finance"
+      "Finance",
+      "Payroll"
     ],
     "systems": [
       "Existing employee portal",
-      "QuickBooks (source of the expense category taxonomy)",
+      "Existing company QuickBooks configuration (authoritative expense type source)",
       "Employee payroll deposit process"
     ],
     "authoritative_sources": [
       "User-provided project brief dated 2026-09-21",
       "User-provided approval policy and GAL mode selection dated 2026-09-21",
       "User-provided threshold, category, and receipt rules dated 2026-09-21",
-      "User-provided payment, resubmission, and submission-timing rules dated 2026-09-21"
+      "User-provided payment, resubmission, and submission-timing rules dated 2026-09-21",
+      "User-provided timing, QuickBooks source, and payroll mechanism status dated 2026-09-21"
     ],
     "confirmed_business_rules": [
       "Employees submit expenses in the existing employee portal.",
@@ -50,7 +52,8 @@
       "Corporate card expenses are paid directly to the card vendor.",
       "For employee-paid out-of-pocket expenses, reimbursement is included in the employee's next scheduled payroll deposit after the expense is approved.",
       "Rejected expenses can be revised and resubmitted.",
-      "Expenses must be submitted within 60 days."
+      "Expenses must be submitted within 60 days of the expense date.",
+      "Expense types come from the company's existing QuickBooks configuration."
     ],
     "derived_facts": [],
     "inferences": [],
@@ -75,26 +78,40 @@
       "question_type": "REQUIRED_CLARIFICATION",
       "priority": "IMPORTANT",
       "status": "OPEN",
-      "disposition": "ACTIVE"
+      "disposition": "DEFERRED"
     },
     {
-      "id": "Q-005",
-      "question": "What is the authoritative list or source for the QuickBooks expense types that ExpPay must mirror?",
+      "id": "Q-007",
+      "question": "What information must an employee provide for each submitted expense?",
       "question_type": "REQUIRED_CLARIFICATION",
       "priority": "IMPORTANT",
       "status": "OPEN",
       "disposition": "ACTIVE"
     },
     {
-      "id": "Q-006",
-      "question": "What event starts the 60-day expense submission period?",
+      "id": "Q-008",
+      "question": "Who may reject an expense, and must the rejection include a reason for the employee?",
+      "question_type": "REQUIRED_CLARIFICATION",
+      "priority": "IMPORTANT",
+      "status": "OPEN",
+      "disposition": "ACTIVE"
+    },
+    {
+      "id": "Q-009",
+      "question": "Which expense status changes require notifications, and who receives them?",
       "question_type": "REQUIRED_CLARIFICATION",
       "priority": "IMPORTANT",
       "status": "OPEN",
       "disposition": "ACTIVE"
     }
   ],
-  "decision_debt": [],
+  "decision_debt": [
+    {
+      "id": "DD-001",
+      "decision": "Finance and Payroll must determine the technical mechanism for transferring approved out-of-pocket expenses into payroll.",
+      "priority": "NON_BLOCKING"
+    }
+  ],
   "resolved_history": [
     {
       "id": "Q-001",
@@ -113,6 +130,18 @@
       "question": "How should amounts between $25.00 and $26.00 and between $100.00 and $101.00 be approved when an expense includes cents?",
       "resolution": "Use continuous approval thresholds: corporate-card expenses up to and including $25 are automatically approved; expenses over $25 and under $101 require the direct manager; expenses of $101 or more require the direct manager and next-level manager. Non-corporate-card expenses always require the direct manager and also require the next-level manager at $101 or more.",
       "resolved_at": "2026-09-21T04:21:56.964225+00:00"
+    },
+    {
+      "id": "Q-005",
+      "question": "What is the authoritative list or source for the QuickBooks expense types that ExpPay must mirror?",
+      "resolution": "Use the company's existing QuickBooks configuration as the authoritative source for expense types.",
+      "resolved_at": "2026-09-21T04:31:27.960928+00:00"
+    },
+    {
+      "id": "Q-006",
+      "question": "What event starts the 60-day expense submission period?",
+      "resolution": "The 60-day submission period starts on the expense date.",
+      "resolved_at": "2026-09-21T04:31:27.961147+00:00"
     }
   ],
   "decisions": [
@@ -127,12 +156,24 @@
       "decision": "Use continuous monetary thresholds for expense approval routing.",
       "source": "User",
       "decided_at": "2026-09-21T04:21:56.964418+00:00"
+    },
+    {
+      "id": "D-003",
+      "decision": "Use the company's existing QuickBooks configuration as the authoritative expense type source.",
+      "source": "User",
+      "decided_at": "2026-09-21T04:31:27.961153+00:00"
+    },
+    {
+      "id": "D-004",
+      "decision": "Measure the 60-day submission period from the expense date.",
+      "source": "User",
+      "decided_at": "2026-09-21T04:31:27.961156+00:00"
     }
   ],
   "readiness": {
     "discovery": {
       "status": "READY_WITH_GAPS",
-      "reason": "3 active important clarification question(s)"
+      "reason": "3 active important clarification question(s); payroll transfer mechanism deferred as non-blocking decision debt"
     },
     "stakeholder_review": {
       "status": "NOT_READY",
@@ -153,5 +194,5 @@
     "timestamp": null,
     "errors": []
   },
-  "last_updated": "2026-09-21T04:26:26.346774+00:00"
+  "last_updated": "2026-09-21T04:31:27.961161+00:00"
 }
