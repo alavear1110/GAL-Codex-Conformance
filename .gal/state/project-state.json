@@ -11,7 +11,8 @@
     "in_scope": [
       "Employee expense submission in the existing employee portal",
       "Manager approval of submitted expenses",
-      "Finance handling of reimbursement"
+      "Finance handling of reimbursement",
+      "Expense categorization using QuickBooks expense types"
     ],
     "out_of_scope": [],
     "actors": [
@@ -20,21 +21,26 @@
       "Finance"
     ],
     "systems": [
-      "Existing employee portal"
+      "Existing employee portal",
+      "QuickBooks (source of the expense category taxonomy)"
     ],
     "authoritative_sources": [
       "User-provided project brief dated 2026-09-21",
-      "User-provided approval policy and GAL mode selection dated 2026-09-21"
+      "User-provided approval policy and GAL mode selection dated 2026-09-21",
+      "User-provided threshold, category, and receipt rules dated 2026-09-21"
     ],
     "confirmed_business_rules": [
       "Employees submit expenses in the existing employee portal.",
       "Managers approve submitted expenses.",
       "Finance handles reimbursement.",
       "Corporate card expenses of $25 or less are automatically approved.",
-      "Corporate card expenses from $26 through $100 require approval by the employee's direct manager.",
+      "Corporate card expenses over $25 and under $101 require approval by the employee's direct manager.",
       "Corporate card expenses of $101 or more require approval by the direct manager and the next-level manager.",
       "Expenses not on a corporate card always require approval by the employee's direct manager.",
-      "Expenses not on a corporate card that are $101 or more also require approval by the next-level manager."
+      "Expenses not on a corporate card that are $101 or more also require approval by the next-level manager.",
+      "Expense categories must mirror QuickBooks expense types because Finance needs those categories for tax reporting.",
+      "No additional category-specific limits have been defined.",
+      "Receipts are required for expenses of $26 or more."
     ],
     "derived_facts": [],
     "inferences": [],
@@ -62,8 +68,8 @@
       "disposition": "ACTIVE"
     },
     {
-      "id": "Q-004",
-      "question": "How should amounts between $25.00 and $26.00 and between $100.00 and $101.00 be approved when an expense includes cents?",
+      "id": "Q-005",
+      "question": "What is the authoritative list or source for the QuickBooks expense types that ExpPay must mirror?",
       "question_type": "REQUIRED_CLARIFICATION",
       "priority": "IMPORTANT",
       "status": "OPEN",
@@ -83,6 +89,12 @@
       "question": "What approval policy should apply to submitted expenses?",
       "resolution": "Approval varies by corporate-card status and expense amount, as recorded in confirmed business rules; fractional threshold gaps remain tracked in Q-004.",
       "resolved_at": "2026-09-21T04:15:07.270674+00:00"
+    },
+    {
+      "id": "Q-004",
+      "question": "How should amounts between $25.00 and $26.00 and between $100.00 and $101.00 be approved when an expense includes cents?",
+      "resolution": "Use continuous approval thresholds: corporate-card expenses up to and including $25 are automatically approved; expenses over $25 and under $101 require the direct manager; expenses of $101 or more require the direct manager and next-level manager. Non-corporate-card expenses always require the direct manager and also require the next-level manager at $101 or more.",
+      "resolved_at": "2026-09-21T04:21:56.964225+00:00"
     }
   ],
   "decisions": [
@@ -91,6 +103,12 @@
       "decision": "Use STANDARD GAL mode for ExpPay.",
       "source": "User",
       "decided_at": "2026-09-21T04:15:07.270680+00:00"
+    },
+    {
+      "id": "D-002",
+      "decision": "Use continuous monetary thresholds for expense approval routing.",
+      "source": "User",
+      "decided_at": "2026-09-21T04:21:56.964418+00:00"
     }
   ],
   "readiness": {
@@ -117,5 +135,5 @@
     "timestamp": null,
     "errors": []
   },
-  "last_updated": "2026-09-21T04:15:07.270684+00:00"
+  "last_updated": "2026-09-21T04:21:56.964424+00:00"
 }
