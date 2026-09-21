@@ -1,0 +1,103 @@
+{
+  "gal_version": "0.5.0",
+  "project_name": "ExpPay",
+  "gal_mode": "UNSET",
+  "task_mode": "EXPLORE",
+  "intake_status": "IN_PROGRESS",
+  "current_phase": "GUIDE",
+  "context": {
+    "objective": "Enable employees to submit expenses in the existing employee portal, route them to managers for approval, and enable Finance to handle reimbursement.",
+    "current_task": "Establish the project scope and requirements for ExpPay.",
+    "in_scope": [
+      "Employee expense submission in the existing employee portal",
+      "Manager approval of submitted expenses",
+      "Finance handling of reimbursement"
+    ],
+    "out_of_scope": [],
+    "actors": [
+      "Employees",
+      "Managers",
+      "Finance"
+    ],
+    "systems": [
+      "Existing employee portal"
+    ],
+    "authoritative_sources": [
+      "User-provided project brief dated 2026-09-21"
+    ],
+    "confirmed_business_rules": [
+      "Employees submit expenses in the existing employee portal.",
+      "Managers approve submitted expenses.",
+      "Finance handles reimbursement."
+    ],
+    "derived_facts": [],
+    "inferences": [],
+    "proposals": [],
+    "constraints": [],
+    "terminology": []
+  },
+  "artifacts": {
+    "requirements": {
+      "path": "",
+      "exists": false,
+      "gal_scrubbed": false,
+      "reconciled": false,
+      "provenance_validated": false,
+      "state_validated": false
+    }
+  },
+  "open_questions": [
+    {
+      "id": "Q-001",
+      "question": "Which GAL requirements depth should ExpPay use?",
+      "question_type": "REQUIRED_CLARIFICATION",
+      "priority": "IMPORTANT",
+      "status": "OPEN",
+      "disposition": "ACTIVE"
+    },
+    {
+      "id": "Q-002",
+      "question": "Does ExpPay only hand approved expenses to Finance for reimbursement, or must it execute or integrate with reimbursement payments?",
+      "question_type": "REQUIRED_CLARIFICATION",
+      "priority": "IMPORTANT",
+      "status": "OPEN",
+      "disposition": "ACTIVE"
+    },
+    {
+      "id": "Q-003",
+      "question": "What approval policy should apply to submitted expenses?",
+      "question_type": "REQUIRED_CLARIFICATION",
+      "priority": "IMPORTANT",
+      "status": "OPEN",
+      "disposition": "ACTIVE"
+    }
+  ],
+  "decision_debt": [],
+  "resolved_history": [],
+  "decisions": [],
+  "readiness": {
+    "discovery": {
+      "status": "READY_WITH_GAPS",
+      "reason": "3 active important clarification question(s)"
+    },
+    "stakeholder_review": {
+      "status": "NOT_READY",
+      "reason": "No reviewable artifact yet"
+    },
+    "development": {
+      "status": "NOT_READY",
+      "reason": "Requirements not established"
+    },
+    "qa_test_design": {
+      "status": "NOT_READY",
+      "reason": "Testable behavior not established"
+    }
+  },
+  "last_validation": {
+    "executed": false,
+    "passed": false,
+    "timestamp": null,
+    "errors": []
+  },
+  "last_updated": "2026-09-21T04:07:30.298846+00:00"
+}
