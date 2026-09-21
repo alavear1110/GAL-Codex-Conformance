@@ -12,7 +12,11 @@
       "Employee expense submission in the existing employee portal",
       "Manager approval of submitted expenses",
       "Finance handling of reimbursement",
-      "Expense categorization using QuickBooks expense types"
+      "Expense categorization using QuickBooks expense types",
+      "Corporate card settlement handling",
+      "Out-of-pocket expense reimbursement through scheduled payroll deposits",
+      "Revision and resubmission of rejected expenses",
+      "Expense submission timeliness enforcement"
     ],
     "out_of_scope": [],
     "actors": [
@@ -22,12 +26,14 @@
     ],
     "systems": [
       "Existing employee portal",
-      "QuickBooks (source of the expense category taxonomy)"
+      "QuickBooks (source of the expense category taxonomy)",
+      "Employee payroll deposit process"
     ],
     "authoritative_sources": [
       "User-provided project brief dated 2026-09-21",
       "User-provided approval policy and GAL mode selection dated 2026-09-21",
-      "User-provided threshold, category, and receipt rules dated 2026-09-21"
+      "User-provided threshold, category, and receipt rules dated 2026-09-21",
+      "User-provided payment, resubmission, and submission-timing rules dated 2026-09-21"
     ],
     "confirmed_business_rules": [
       "Employees submit expenses in the existing employee portal.",
@@ -40,7 +46,11 @@
       "Expenses not on a corporate card that are $101 or more also require approval by the next-level manager.",
       "Expense categories must mirror QuickBooks expense types because Finance needs those categories for tax reporting.",
       "No additional category-specific limits have been defined.",
-      "Receipts are required for expenses of $26 or more."
+      "Receipts are required for expenses of $26 or more.",
+      "Corporate card expenses are paid directly to the card vendor.",
+      "For employee-paid out-of-pocket expenses, reimbursement is included in the employee's next scheduled payroll deposit after the expense is approved.",
+      "Rejected expenses can be revised and resubmitted.",
+      "Expenses must be submitted within 60 days."
     ],
     "derived_facts": [],
     "inferences": [],
@@ -61,7 +71,7 @@
   "open_questions": [
     {
       "id": "Q-002",
-      "question": "Does ExpPay only hand approved expenses to Finance for reimbursement, or must it execute or integrate with reimbursement payments?",
+      "question": "What process or system transfers an approved out-of-pocket expense into the employee payroll deposit, and what role does ExpPay play in that transfer?",
       "question_type": "REQUIRED_CLARIFICATION",
       "priority": "IMPORTANT",
       "status": "OPEN",
@@ -70,6 +80,14 @@
     {
       "id": "Q-005",
       "question": "What is the authoritative list or source for the QuickBooks expense types that ExpPay must mirror?",
+      "question_type": "REQUIRED_CLARIFICATION",
+      "priority": "IMPORTANT",
+      "status": "OPEN",
+      "disposition": "ACTIVE"
+    },
+    {
+      "id": "Q-006",
+      "question": "What event starts the 60-day expense submission period?",
       "question_type": "REQUIRED_CLARIFICATION",
       "priority": "IMPORTANT",
       "status": "OPEN",
@@ -114,7 +132,7 @@
   "readiness": {
     "discovery": {
       "status": "READY_WITH_GAPS",
-      "reason": "2 active important clarification question(s)"
+      "reason": "3 active important clarification question(s)"
     },
     "stakeholder_review": {
       "status": "NOT_READY",
@@ -135,5 +153,5 @@
     "timestamp": null,
     "errors": []
   },
-  "last_updated": "2026-09-21T04:21:56.964424+00:00"
+  "last_updated": "2026-09-21T04:26:26.346774+00:00"
 }
